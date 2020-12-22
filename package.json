@@ -1,0 +1,20 @@
+{
+  "name": "brasilcep-api",
+  "version": "1.0.0",
+  "description": "Brasil CEP API (não oficial)",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "brasilcep",
+    "api",
+    "brasilcep api",
+    "brasil",
+    "cep"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5"
+  }
+}
