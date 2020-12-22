@@ -1,6 +1,6 @@
-const getCEPInfo = require("../index");
+const getCEPInfo = require("brasilcep-api");
 
-getCEPInfo("87035230")
+getCEPInfo("78550000")
     .then((data) => {
         console.log(data);
     })

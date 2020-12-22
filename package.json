@@ -1,6 +1,6 @@
 {
   "name": "brasilcep-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Brasil CEP API (não oficial)",
   "main": "index.js",
   "scripts": {
