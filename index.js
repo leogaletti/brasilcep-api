@@ -1,7 +1,7 @@
 const http = require("http");
 const cheerio = require("cheerio");
 
-module.exports = getCEPInfo = (cep) => {
+function getCEPInfo(cep) {
     return new Promise((resolve, reject) => {
         const CEP_BEAUTIFUL = cep.replace(/[^\w\s]/gi, "");
         const optionsRedirect = {
@@ -11,11 +11,18 @@ module.exports = getCEPInfo = (cep) => {
         };
 
         const requestRedirect = http.request(optionsRedirect, (response) => {
+            const { location } = response.headers;
+
+            if (!location) {
+                reject(new Error("Invalid response from server"));
+                return;
+            }
+
+            const urlPath = new URL(location).pathname;
+
             const optionsCEPInfo = {
                 hostname: "brasilcep.com.br",
-                path: response.headers.location.slice(
-                    response.headers.location.indexOf("br/") + 2
-                ),
+                path: urlPath,
                 method: "GET",
             };
 
@@ -71,4 +78,6 @@ module.exports = getCEPInfo = (cep) => {
 
         requestRedirect.end();
     });
-};
+}
+
+module.exports = getCEPInfo;
